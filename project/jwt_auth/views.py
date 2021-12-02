@@ -5,12 +5,13 @@ from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import status
 
-#from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model
 from django.conf import settings
 import jwt
-from .serializers import UserSerializer
-#User = get_user_model()
+from .serializers import UserSerializer, PopulatedUserSerializer
 from .models import User
+User = get_user_model()
+
 # Create your views here.
 
 
@@ -42,8 +43,15 @@ class LoginView(APIView):
         return Response({'token': token, 'message': f'Welcome back {user.username}'})
 
 
-class UsersDetailView(APIView):
+class UsersListView(APIView):
     def get(self, request):
         users = User.objects.all()
-        serialized_users = UserSerializer(users, many=True)
+        serialized_users = PopulatedUserSerializer(users, many=True)
+        return Response(serialized_users.data, status=status.HTTP_200_OK)
+
+
+class UserDetailView(APIView):
+    def get(self, request, pk):
+        sing_use = User.objects.get(id=pk)
+        serialized_users = PopulatedUserSerializer(sing_use)
         return Response(serialized_users.data, status=status.HTTP_200_OK)

@@ -4,14 +4,12 @@ import django.contrib.auth.password_validation as validations
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 from input.serializers import PopulatedSerializer
-#User = get_user_model()
 from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     password_confirmation = serializers.CharField(write_only=True)
-    input_set = PopulatedSerializer(many=True)
 
     def validate(self, data):
         password = data.pop('password')
@@ -29,3 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
+
+class PopulatedUserSerializer(UserSerializer):
+    input_set = PopulatedSerializer(many=True)
