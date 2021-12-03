@@ -8,7 +8,7 @@ from rest_framework import status
 from django.contrib.auth import get_user_model
 from django.conf import settings
 import jwt
-from .serializers import UserSerializer, PopulatedUserSerializer
+from .serializers import TestSerializer, UserSerializer, PopulatedUserSerializer
 from .models import User
 User = get_user_model()
 
@@ -45,13 +45,17 @@ class LoginView(APIView):
 
 class UsersListView(APIView):
     def get(self, request):
+        print("USER - 1: ", request.data)
         users = User.objects.all()
-        serialized_users = PopulatedUserSerializer(users, many=True)
+        serialized_users = TestSerializer(users, many=True)
         return Response(serialized_users.data, status=status.HTTP_200_OK)
 
 
 class UserDetailView(APIView):
     def get(self, request, pk):
+        print("USER - 1: ", request)
         sing_use = User.objects.get(id=pk)
-        serialized_users = PopulatedUserSerializer(sing_use)
+        print("USER - 2: ", sing_use)
+        serialized_users = TestSerializer(sing_use)
+        print("USER - 3: ", serialized_users.data)
         return Response(serialized_users.data, status=status.HTTP_200_OK)

@@ -31,3 +31,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PopulatedUserSerializer(UserSerializer):
     input_set = PopulatedSerializer(many=True)
+
+
+class TestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'

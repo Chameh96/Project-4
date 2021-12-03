@@ -17,18 +17,22 @@ from .serializers import PopulatedSerializer, InputSerializer
 
 class InputListView(APIView):
     def get(self, request):
-        print('decypt: Test 1', request.data['password'])
-        test_var = request.data['password']
-        str(test_var)
-        answer = decryption(test_var)
-        print('decrypt: Test 2', answer)
+        print('decypt: Test 1', request.user)
+        u = request.user
+        print('USER :', u.input_set.all())
+        query = u.input_set.all()
+        just_pass = query.values('password')
+        data = list(just_pass)
+        print('DATA_LIST: ', data)
+        for object in data:
+            txt = object['password']
+            print('TXT', txt)
+            dec_pass = decryption(txt)
+            print('MAYBE DEC', dec_pass)
+
         inputs = Input.objects.all()
         serialized_inputs = PopulatedSerializer(inputs, many=True)
-        if serialized_inputs.is_valid():
-            serialized_inputs.save(password=answer)
-            return Response(serialized_inputs.data, status=status.HTTP_200_OK)
-        else:
-            return Response(input.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(serialized_inputs.data, status=status.HTTP_200_OK)
 
     def post(self, request):
         test_var = request.data['password']

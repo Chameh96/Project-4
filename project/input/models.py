@@ -14,4 +14,7 @@ class Input(models.Model):
     user = models.ForeignKey("jwt_auth.User", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.username + self.site_name + self.website_url + self.password
+        return "Username: " + self.username + ' Site_Name: ' + self.site_name + ' Website_url: ' + self.website_url + ' Password: ' + self.password
+
+    # def pword(self):
+        # return 'Password' + self.password
