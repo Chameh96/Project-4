@@ -1,5 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Register from './pages/Register'
+import Login from './pages/Login'
+
 
 function App() {
   React.useEffect(() => {
@@ -10,7 +14,18 @@ function App() {
     getData()
   })
 
-  return <h1>Hello World</h1>
+  return (
+    <BrowserRouter>
+      <div className='total-page'>
+        <main>
+          <Routes>
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+          </Routes>
+        </main>
+      </div>
+    x</BrowserRouter>
+  )
 }
 
 export default App

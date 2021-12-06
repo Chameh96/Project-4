@@ -17,7 +17,7 @@ from .serializers import PopulatedSerializer, InputSerializer
 
 class InputListView(APIView):
     def get(self, request):
-        print('decypt: Test 1', request.user)
+        print('REQUEST', request.user)
         u = request.user
         print('USER :', u.input_set.all())
         query = u.input_set.all()
@@ -30,8 +30,8 @@ class InputListView(APIView):
             dec_pass = decryption(txt)
             print('MAYBE DEC', dec_pass)
 
-        inputs = Input.objects.all()
-        serialized_inputs = PopulatedSerializer(inputs, many=True)
+        inputs = Input.objects.filter(user=u)
+        serialized_inputs = InputSerializer(inputs, many=True)
         return Response(serialized_inputs.data, status=status.HTTP_200_OK)
 
     def post(self, request):

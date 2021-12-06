@@ -3,10 +3,10 @@ from cryptography.fernet import Fernet
 key = Fernet.generate_key()
 
 fernet = Fernet(key)
-# txt = 'my secret'
-# encypted_text = fernet.encrypt(txt.encode())
+#txt = 'my secret'
+#encypted_text = fernet.encrypt(txt.encode())
 # print(encypted_text)
-# decrypted_text = fernet.decrypt(encypted_text).decode()
+#decrypted_text = fernet.decrypt(encypted_text).decode()
 # print(decrypted_text)
 
 # CREATING CRYPTOGRAPH ENCRYPTION
@@ -20,12 +20,11 @@ def encryption(txt):
 def decryption(txt):
     print('CHICKEN')
     print('CHICKEN TXT:', txt)
+    set_text = bytes(txt)
+    print('BYTES_TEXT: ', set_text)
     decoder = fernet.decrypt(bytes(txt))
     print('DECODERTRON : ', decoder)
-    decpass = fernet.decrypt(txt)
-
-    print('DECPASS', decpass)
-    decypted = decpass.decode()
+    decypted = decoder.decode()
     print('DECRYPTED', decypted)
     return decypted
 

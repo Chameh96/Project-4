@@ -18,6 +18,7 @@ User = get_user_model()
 class RegisterView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
+        print('REQUEST.DATA :', request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({'message': 'Succesfully registeres your account'})

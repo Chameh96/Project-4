@@ -10,11 +10,11 @@ class Input(models.Model):
     username = models.CharField(max_length=100)
     site_name = models.CharField(max_length=100)
     website_url = models.CharField(max_length=100)
-    password = models.CharField(max_length=400)
+    password = models.BinaryField(max_length=400)
     user = models.ForeignKey("jwt_auth.User", on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Username: " + self.username + ' Site_Name: ' + self.site_name + ' Website_url: ' + self.website_url + ' Password: ' + self.password
+        return "Username: " + self.username + ' Site_Name: ' + self.site_name + ' Website_url: ' + self.website_url
 
     # def pword(self):
         # return 'Password' + self.password
