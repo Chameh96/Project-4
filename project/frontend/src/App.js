@@ -3,6 +3,8 @@ import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Passlist from './pages/Pass-list'
+import PasswordShow from './pages/PasswordShow'
 
 
 function App() {
@@ -21,6 +23,10 @@ function App() {
           <Routes>
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/home' element={<Passlist />} />
+            <Route path='/password/add' element={<PasswordShow />} />
+            <Route path='/password/edit' element={<PasswordShow />} />
+            <Route path='/password' element={<PasswordShow />} />
           </Routes>
         </main>
       </div>

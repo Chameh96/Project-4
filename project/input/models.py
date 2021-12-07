@@ -8,13 +8,13 @@ from django_cryptography.fields import encrypt
 
 class Input(models.Model):
     username = models.CharField(max_length=100)
-    site_name = models.CharField(max_length=100)
-    website_url = models.CharField(max_length=100)
+    sitename = models.CharField(max_length=100)
+    websiteurl = models.CharField(max_length=100)
     password = models.BinaryField(max_length=400)
     user = models.ForeignKey("jwt_auth.User", on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Username: " + self.username + ' Site_Name: ' + self.site_name + ' Website_url: ' + self.website_url
+        return "Username: " + self.username + ' Site_Name: ' + self.sitename + ' Website_url: ' + self.websiteurl
 
     # def pword(self):
         # return 'Password' + self.password

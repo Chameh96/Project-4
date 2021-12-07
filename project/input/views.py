@@ -49,6 +49,18 @@ class InputListView(APIView):
 class InputDetailView(APIView):
     # GET SINGLE INPUT
     def get(self, request, pk):
+        print('SING-REQ', request.user)
+        u = request.user
+        print('SING-USER :', u.input_set.all())
+        query = u.input_set.all()
+        just_pass = query.values('password')
+        data = list(just_pass)
+        print('SING-DATA_LIST: ', data)
+        for object in data:
+            txt = object['password']
+            print('SING-TXT', txt)
+            dec_pass = decryption(txt)
+            print('SING - MAYBE DEC', dec_pass)
         input = Input.objects.get(id=pk)
         serialized_input = PopulatedSerializer(input)
         return Response(serialized_input.data, status=status.HTTP_200_OK)

@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Passcard = ({ username, site_name, website_url, password, id}) => {
-    const handleClick = (event) => {
-        console.log('Passcard Clicked: ', id)
-        event.preventDefault()
-    }
+const Passcard = ({ username, sitename, id }) => {
+  //const handleClick = (event) => {
+  //console.log('Passcard Clicked: ', id)
+  //event.preventDefault()
+  //}
 
-    return (
-        <>
-        <div className={`card ${isHorizontal && 'horizontal'}`}>
+  return (
+    <>
       <div>
         <h2>
-          <Link to={`/password/${_id}`}>
-            {site_name}
+          <Link to={`/api/password/${id}/`}>
+            {sitename}
           </Link>
         </h2>
         <p>{username}</p>
-     </div>
-        </>
-    )
+      </div>
+    </>
+  )
 }
+
+export default Passcard

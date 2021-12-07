@@ -3,6 +3,7 @@ import axios from 'axios'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { setToken } from '../helpers/auth'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -75,14 +76,16 @@ const Login = () => {
           ) : (
             <></>
           )}
-          <Button
-            className='login-button'
-            variant='primary'
-            type='submit'
-            value='Login'
-          >
-            Login
-          </Button>
+          <Link to={'/home/'}>
+            <Button
+              className='login-button'
+              variant='primary'
+              type='submit'
+              value='Login'
+            >
+              Login
+            </Button>
+          </Link>
           <label>Not a member yet?</label>
           <Button
             className='not-member-button'
