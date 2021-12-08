@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Register from './pages/Register'
 import Login from './pages/Login'
@@ -10,14 +9,6 @@ import EditPassword from './pages/EditPassword'
 
 
 function App() {
-  React.useEffect(() => {
-    const getData = async () => {
-      const res = await axios.get('/api/password/') // * <-- replace with your endpoint
-      console.log(res.data)
-    }
-    getData()
-  })
-
   return (
     <BrowserRouter>
       <div className='total-page'>
@@ -33,7 +24,7 @@ function App() {
           </Routes>
         </main>
       </div>
-    x</BrowserRouter>
+    </BrowserRouter>
   )
 }
 

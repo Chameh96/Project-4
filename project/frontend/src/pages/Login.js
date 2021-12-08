@@ -1,35 +1,24 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { setToken } from '../helpers/auth'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router'
+import { login } from '../helpers/api'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   const [isError, setIsError] = useState(false)
   const navigate = useNavigate()
+  const [data, setData] = useState({
+    email: '',
+    password: '',
+  })
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
-    const data = {
-      email,
-      password,
-    }
-    const config = {
-      method: 'post',
-      url: '/api/auth/login/',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: data,
-    }
     try {
-      const response = await axios(config)
-      console.log(response)
+      const response = await login(data)
+      console.log('RESPONSE TOKEN', response)
       setToken(response.data.token)
       setIsError(false)
       navigate('/home/')
@@ -39,12 +28,17 @@ const Login = () => {
     }
   }
   const handleEmailChange = (event) => {
-    setEmail(event.target.value)
-    console.log('EMAIL : ', email)
+    setData({
+      ...data,
+      email: event.target.value,
+    })
   }
+
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value)
-    console.log('PASSWORD :', password)
+    setData({
+      ...data,
+      password: event.target.value,
+    })
   }
 
   return (
@@ -59,7 +53,6 @@ const Login = () => {
             <Form.Control
               type='text'
               placeholder='Enter email'
-              value={email}
               onChange={handleEmailChange}
             />
           </Form.Group>
@@ -68,7 +61,6 @@ const Login = () => {
             <Form.Control
               type='password'
               placeholder='Password'
-              value={password}
               onChange={handlePasswordChange}
             />
           </Form.Group>

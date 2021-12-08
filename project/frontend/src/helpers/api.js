@@ -4,7 +4,17 @@ import { getToken } from './auth'
 
 //Login
 export const login = async (data) => {
-  return makeAxiosRequest('/login', data)
+  const config = {
+    method: 'post',
+    url: '/api/auth/login/',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    // The "payload" or the "body" of the request: the important info we send as JSON
+    data,
+  }
+  const response = await axios(config)
+  return response.data
 }
   
 //Register
@@ -25,9 +35,8 @@ export const getAxiosRequestConfig = (requestUrl, data, method = 'post') => {
   // Config object – tells us everything special about the request
   const config = {
     method,
-    url: `/api/recipes${requestUrl}`,
+    url: `/api/auth/${requestUrl}`,
     headers: {
-      Authorization: `Bearer ${getToken()}`,
       'Content-Type': 'application/json',
     },
     // The "payload" or the "body" of the request: the important info we send as JSON
