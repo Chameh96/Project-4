@@ -24,17 +24,12 @@ class InputListView(APIView):
         just_pass = query.values('password')
         data = list(just_pass)
         print('DATA_LIST: ', data)
-        for object in data:
-            txt = object['password']
-            print('TXT', txt)
-            dec_pass = decryption(txt)
-            print('MAYBE DEC', dec_pass)
-
         inputs = Input.objects.filter(user=u)
         serialized_inputs = InputSerializer(inputs, many=True)
         return Response(serialized_inputs.data, status=status.HTTP_200_OK)
 
     def post(self, request):
+        request.data['user'] = request.user.id
         test_var = request.data['password']
         str(test_var)
         answer = encryption(test_var)
@@ -56,13 +51,8 @@ class InputDetailView(APIView):
         just_pass = query.values('password')
         data = list(just_pass)
         print('SING-DATA_LIST: ', data)
-        for object in data:
-            txt = object['password']
-            print('SING-TXT', txt)
-            dec_pass = decryption(txt)
-            print('SING - MAYBE DEC', dec_pass)
         input = Input.objects.get(id=pk)
-        serialized_input = PopulatedSerializer(input)
+        serialized_input = InputSerializer(input)
         return Response(serialized_input.data, status=status.HTTP_200_OK)
 
     # DELETE INPUT
@@ -73,13 +63,14 @@ class InputDetailView(APIView):
 
     # UPDATE INPUT
     def put(self, request, pk):
+        request.data['user'] = request.user.id
         test_var = request.data['password']
         str(test_var)
         answer = encryption(test_var)
         input = Input.objects.get(id=pk)
         updated_input = InputSerializer(input, data=request.data)
         if updated_input.is_valid():
-            updated_input.save()
+            updated_input.save(password=answer)
             return Response(updated_input.data, status=status.HTTP_202_ACCEPTED)
         else:
             return Response(updated_input.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

@@ -8,6 +8,10 @@ class InputSerializer(serializers.ModelSerializer):
         model = Input
         fields = '__all__'
 
+    decrypted = serializers.ReadOnlyField(
+        source="decryption_method"
+    )
+
 
 class PopulatedSerializer(InputSerializer):
     user = UserSingleSerlializer(read_only=True, many=True)

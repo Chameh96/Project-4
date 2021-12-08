@@ -11,7 +11,7 @@ const Passcard = ({ username, sitename, id }) => {
     <>
       <div>
         <h2>
-          <Link to={`/api/password/${id}/`}>
+          <Link to={`/password/${id}/`}>
             {sitename}
           </Link>
         </h2>

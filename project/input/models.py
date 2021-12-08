@@ -2,6 +2,7 @@ from django.db import models
 from django.http.response import HttpResponse
 from cryptography.fernet import Fernet
 from django_cryptography.fields import encrypt
+from .encryption import decryption
 
 # Create your models here.
 
@@ -16,5 +17,9 @@ class Input(models.Model):
     def __str__(self):
         return "Username: " + self.username + ' Site_Name: ' + self.sitename + ' Website_url: ' + self.websiteurl
 
-    # def pword(self):
-        # return 'Password' + self.password
+    def decryption_method(self):
+        txt = self.password
+        print('TXT', txt)
+        dec_pass = decryption(txt)
+        print('MAYBE DEC', dec_pass)
+        return dec_pass

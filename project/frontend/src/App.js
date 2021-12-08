@@ -27,8 +27,9 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/home' element={<Passlist />} />
             <Route path='/password/add' element={<AddPassword />} />
-            <Route path='/password/edit' element={<EditPassword />} />
-            <Route path='/password' element={<PasswordShow />} />
+            <Route path='/password/:id' element={<PasswordShow />} />
+            <Route path='/password/edit/:id' element={<EditPassword />} />
+            <Route exact path='/password' element={<PasswordShow />} />
           </Routes>
         </main>
       </div>

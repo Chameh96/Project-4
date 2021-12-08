@@ -36,16 +36,32 @@ export const getAxiosRequestConfig = (requestUrl, data, method = 'post') => {
   return config
 }
 
-//FETCH ALL RECIPES FROM USER
+//FETCH ALL PASSWORD FROM USER
 export const fetchPasswords = async () => {
   const config = {
     method: 'get',
     url: '/api/password/view/',
     headers: {
       Authorization: `Bearer ${getToken()}`,
+      'Content-Type': 'application/json',
     },
   }
   const response = await axios(config)
-  console.log(response)
+  console.log('RESPONSE', response)
+  return response.data
+}
+
+//FETCH SINGLE PASSWORD FROM USER
+export const fetchPassword = async (id) => {
+  const config = {
+    method: 'get',
+    url: `/api/password/${id}/`,
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+      'Content-Type': 'application/json',
+    },
+  }
+  const response = await axios(config)
+  console.log('SINGLE REPSONSE :', response)
   return response.data
 }

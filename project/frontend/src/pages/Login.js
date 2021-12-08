@@ -4,11 +4,13 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { setToken } from '../helpers/auth'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isError, setIsError] = useState(false)
+  const navigate = useNavigate()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -30,6 +32,7 @@ const Login = () => {
       console.log(response)
       setToken(response.data.token)
       setIsError(false)
+      navigate('/home/')
     } catch (err) {
       console.error(err)
       setIsError(true)
@@ -87,13 +90,14 @@ const Login = () => {
             </Button>
           </Link>
           <label>Not a member yet?</label>
-          <Button
-            className='not-member-button'
-            variant='secondary'
-            
-          >
-            Join Ed-Crypt
-          </Button>
+          <Link to={'/register/'}>
+            <Button
+              className='not-member-button'
+              variant='secondary'
+            >
+              Join Ed-Crypt
+            </Button>
+          </Link>
         </Form>
       </div>
     </>
