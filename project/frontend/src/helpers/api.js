@@ -3,9 +3,9 @@ import { getToken } from './auth'
 
 
 //Login
-export const login = async (data) => {
+export const login = async (data, methoded) => {
   const config = {
-    method: 'post',
+    method: methoded,
     url: '/api/auth/login/',
     headers: {
       'Content-Type': 'application/json',

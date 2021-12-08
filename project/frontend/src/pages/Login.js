@@ -17,11 +17,11 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const response = await login(data)
+      const response = await login(data, 'post')
       console.log('RESPONSE TOKEN', response)
       setToken(response.data.token)
       setIsError(false)
-      navigate('/home/')
+      redirect()
     } catch (err) {
       console.error(err)
       setIsError(true)
@@ -39,6 +39,9 @@ const Login = () => {
       ...data,
       password: event.target.value,
     })
+  }
+  const redirect = () => {
+    navigate('/home/')
   }
 
   return (
@@ -71,16 +74,16 @@ const Login = () => {
           ) : (
             <></>
           )}
-          <Link to={'/home/'}>
-            <Button
-              className='login-button'
-              variant='primary'
-              type='submit'
-              value='Login'
-            >
-              Login
-            </Button>
-          </Link>
+          {/* <Link to={'/home/'}> */}
+          <Button
+            className='login-button'
+            variant='primary'
+            type='submit'
+            value='Login'
+          >
+            Login
+          </Button>
+          {/* </Link> */}
           <label>Not a member yet?</label>
           <Link to={'/register/'}>
             <Button

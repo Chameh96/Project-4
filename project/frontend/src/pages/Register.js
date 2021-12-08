@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 const Register = () => {
   const [data, setData] = useState({
@@ -14,6 +15,7 @@ const Register = () => {
   })
 
   const [isError, setIsError] = useState(false)
+  const navigate = useNavigate()
 
   const handleRegister = async (event) => {
     event.preventDefault()
@@ -31,6 +33,7 @@ const Register = () => {
       const response = await axios(config)
       console.log(response.data)
       setIsError(false)
+      navigate('/login/')
     } catch (err) {
       console.log(err)
       setIsError(true)
