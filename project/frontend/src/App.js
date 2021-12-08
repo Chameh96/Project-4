@@ -5,6 +5,8 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Passlist from './pages/Pass-list'
 import PasswordShow from './pages/PasswordShow'
+import AddPassword from './pages/AddPassword'
+import EditPassword from './pages/EditPassword'
 
 
 function App() {
@@ -24,8 +26,8 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/home' element={<Passlist />} />
-            <Route path='/password/add' element={<PasswordShow />} />
-            <Route path='/password/edit' element={<PasswordShow />} />
+            <Route path='/password/add' element={<AddPassword />} />
+            <Route path='/password/edit' element={<EditPassword />} />
             <Route path='/password' element={<PasswordShow />} />
           </Routes>
         </main>
