@@ -1,6 +1,6 @@
 main {
   background-color: $background;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +17,7 @@ h1 {
   color: $text-box;
 }
 .home-text {
-  width: 95vw;
+  width: 90vw;
   background-color: $text-box;
   padding: 15px;
   border-radius: 5px;
