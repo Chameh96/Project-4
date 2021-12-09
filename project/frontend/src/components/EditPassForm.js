@@ -32,7 +32,7 @@ const EditPassForm = ({ formInputProps }) => {
   }
   
   return (
-    <div>
+    <div className='forms'>
       <Form.Group className="mb-3" controlId="recipeTitle">
         <Form.Label>Username</Form.Label>
         < Form.Control type="text" placeholder="Enter Username" name='username' value={data.username} onChange={handleNameChange} />

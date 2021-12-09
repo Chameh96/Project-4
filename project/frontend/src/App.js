@@ -6,6 +6,7 @@ import Passlist from './pages/Pass-list'
 import PasswordShow from './pages/PasswordShow'
 import AddPassword from './pages/AddPassword'
 import EditPassword from './pages/EditPassword'
+import Home from './pages/Home'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path='/password/:id' element={<PasswordShow />} />
             <Route path='/password/edit/:id' element={<EditPassword />} />
             <Route exact path='/password' element={<PasswordShow />} />
+            <Route exact path='' element={<Home />} />
           </Routes>
         </main>
       </div>

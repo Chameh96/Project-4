@@ -4,6 +4,7 @@ import axios from 'axios'
 import { getToken } from '../helpers/auth'
 import EditPassForm from '../components/EditPassForm'
 import { fetchPassword } from '../helpers/api'
+import { Button } from 'react-bootstrap'
 
 const EditPassword = () => {
   const [data, setData] = useState({
@@ -71,14 +72,15 @@ const EditPassword = () => {
       { pageload ?
         <>    
           <div className='edit-recipe'>
-            <h3>Edit Password</h3>
+            <div className='top-titles'>
+              <h1>Ed-crypt</h1>
+              <h2>Edit Password</h2>
+            </div>
             <form onSubmit={handleSubmit} className='total-form'>
               <EditPassForm formInputProps={formInputProps}/>
-              <div className='add-button'>
-                <input type='submit' className = 'click' value='Save Updates'/>
-              </div>
-              <div>
-                <input type='button' onClick={goBack} className ='click' value='Cancel'/>
+              <div className='bottom-buttons'>
+                <Button type='submit' className = 'update-button' value='Save Updates'>Save Updates</Button>
+                <Button type='button' onClick={goBack} className ='update-button' value='Cancel'>Go Back</Button>
               </div>
             </form>
           </div>

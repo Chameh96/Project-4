@@ -28,7 +28,7 @@ const PassForm = ({ handleFormChange }) => {
     console.log(password)
   }
   return (
-    <div>
+    <div className='forms'>
       <Form.Group className="mb-3" controlId="recipeTitle">
         <Form.Label>Username</Form.Label>
         < Form.Control type="text" placeholder="Enter Username" name='username' value={username} onChange={handleNameChange} />

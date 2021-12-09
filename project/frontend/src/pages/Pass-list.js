@@ -3,10 +3,14 @@ import { fetchPasswords } from '../helpers/api'
 import React from 'react'
 import Passcard from '../components/Passcard'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import { removeToken } from '../helpers/auth'
+import { useNavigate } from 'react-router'
 
 const Passlist = () => {
   const [inputs, setInputs] = useState([])
   const [pageload, setPageload] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getData = async () => {
@@ -19,6 +23,11 @@ const Passlist = () => {
     getData()
   }, [])
 
+  const handleLogout = () => {
+    removeToken()
+    navigate('/')
+  }
+
 
 
 
@@ -26,8 +35,15 @@ const Passlist = () => {
     <>
       { pageload ? 
         <>
-          <div>
-            <h2> My passwords</h2>
+          <div className='top-titles'>
+            <h1> Ed-crypt </h1>
+            <h2> My Passwords</h2>
+          </div>
+          <div className='bottom-buttons'>
+            <Link to={'/password/add/'}>
+              <Button className='update-button'>Add a password</Button>
+            </Link>
+            <Button onClick={handleLogout} className='update-button'>Logout</Button>
           </div>
           <div className='passList'>
             {inputs.map((input) => (
@@ -35,11 +51,6 @@ const Passlist = () => {
                 <Passcard {...input}/>
               </div>
             ))}
-          </div>
-          <div>
-            <Link to={'/password/add/'}>
-              <button className='update-button'>Add a password</button>
-            </Link>
           </div>
         </>
         :

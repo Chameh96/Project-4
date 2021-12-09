@@ -1,0 +1,57 @@
+main {
+  background-color: $background;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $text;
+}
+.homepage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  padding: 5px;
+  color: $text-box;
+}
+.home-text {
+  width: 95vw;
+  background-color: $text-box;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  h4 {
+    text-align: center;
+    width: 100%;
+  }
+  p {
+    text-align: justify;
+  }
+}
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  a {
+    padding: 10px;
+  }
+}
+.login-button {
+  width: 20vw;
+  height: 6vh;
+  padding: 10px;
+  background-color: $border !important;
+  color: $text;
+}
+.register-button {
+  width: 20vw;
+  height: 6vh;
+  padding: 10px;
+  background-color: $border !important;
+  color: $text;
+}

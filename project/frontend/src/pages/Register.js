@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   const [data, setData] = useState({
@@ -53,7 +54,7 @@ const Register = () => {
       <div>
         <h2>Register your account</h2>
       </div>
-      <div>
+      <div className='forms'>
         <Form onSubmit={handleRegister}>
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
@@ -85,8 +86,18 @@ const Register = () => {
             </div>
           ) : (
             <></>
-          )} 
-          <Button className="register-button" variant="primary" type="submit">Register</Button>   
+          )}
+          <div className = 'bottom-buttons'>
+            <Button className="register-button" variant="primary" type="submit">Register</Button>   
+            <Link to={'/'}>
+              <Button
+                className='login-button'
+                variant='secondary'
+              >
+                Go Back
+              </Button>
+            </Link>
+          </div>
         </Form>
       </div>
     </>

@@ -19,7 +19,7 @@ const Login = () => {
     try {
       const response = await login(data, 'post')
       console.log('RESPONSE TOKEN', response)
-      setToken(response.data.token)
+      setToken(response.token)
       setIsError(false)
       redirect()
     } catch (err) {
@@ -49,7 +49,7 @@ const Login = () => {
       <div> 
         <h2>Login to Ed-Crypt</h2>
       </div>
-      <div>
+      <div className='forms'>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Label>Email Address</Form.Label>
@@ -74,25 +74,26 @@ const Login = () => {
           ) : (
             <></>
           )}
-          {/* <Link to={'/home/'}> */}
-          <Button
-            className='login-button'
-            variant='primary'
-            type='submit'
-            value='Login'
-          >
-            Login
-          </Button>
-          {/* </Link> */}
-          <label>Not a member yet?</label>
-          <Link to={'/register/'}>
+          <div className='bottom-buttons'>
             <Button
-              className='not-member-button'
-              variant='secondary'
+              className='login-button'
+              variant='primary'
+              type='submit'
+              value='Login'
             >
-              Join Ed-Crypt
+              Login
             </Button>
-          </Link>
+            <div className='not-member-button'>
+              <Link to={'/register/'}>
+                <Button
+                  className='register-button'
+                  variant='secondary'
+                >
+                  Register an account
+                </Button>
+              </Link>
+            </div>
+          </div>
         </Form>
       </div>
     </>

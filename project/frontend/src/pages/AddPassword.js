@@ -4,6 +4,7 @@ import PassForm from '../components/PassForm'
 import { getToken } from '../helpers/auth'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 const AddPassword =  () => {
   const navigate = useNavigate()
@@ -54,7 +55,10 @@ const AddPassword =  () => {
   return (
     <>
       <div>
-        <h3>Add a new password</h3>
+        <div className='top-titles'>
+          <h1>Ed-crypt</h1>
+          <h2>Add a new password</h2>
+        </div>
         <form onSubmit={handleSubmit} className='total-form'>
           <div> 
             <PassForm handleFormChange={handleFormChange}/>
@@ -66,15 +70,18 @@ const AddPassword =  () => {
           ) : (
             <></>
           )}
-          <div className='add-button'>
-            <input type='submit' className='click' value='Add Password' />
+          <div className='bottom-buttons'>
+            <div className='add-button'>
+              <Button type='submit' className='update-button' value='Add Password'>Add Password</Button>
+            </div>
+            <div>
+              <Link to={'/home/'}>
+                <Button className='update-button'>Go Back</Button>
+              </Link>
+            </div>
           </div>
         </form>
-        <div>
-          <Link to={'/home/'}>
-            <button className='update-button'>Go Back</button>
-          </Link>
-        </div>
+        
       </div>
     </>
   )

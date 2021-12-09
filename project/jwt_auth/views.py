@@ -21,7 +21,7 @@ class RegisterView(APIView):
         print('REQUEST.DATA :', request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'message': 'Succesfully registeres your account'})
+            return Response({'message': 'Succesfully registered your account'})
         return Response(serializer.errors, status=422)
 
 
