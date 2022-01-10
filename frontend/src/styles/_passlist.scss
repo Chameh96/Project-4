@@ -1,0 +1,46 @@
+.top-titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  min-height: 100vh;
+}
+
+.passList {
+  width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.onePass {
+  background-color: $text-box;
+  color: $text;
+  width: 48%;
+  height: 20vh;
+  margin: 10px;
+  border-radius: 5px;
+  h2 {
+    color: $text;
+    border-bottom: 2px dotted $text;
+    padding-top: 2.5vh;
+    height: 10vh;
+  }
+  a {
+    color: $text;
+  }
+  p {
+    font-size: 1.5rem;
+    padding-top: 1.5vh;
+    padding-left: 2vw;
+  }
+}
+.update-button {
+  width: 20vw;
+  height: 6vh;
+  padding: 10px;
+  background-color: $border !important;
+  color: $text;
+}

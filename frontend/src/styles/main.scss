@@ -1,0 +1,12 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "colors";
+@import "home";
+@import "login";
+@import "register";
+@import "passlist";
+@import "addpass";
+@import "passwordshow";
+
+* {
+  box-sizing: border-box;
+}
