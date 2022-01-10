@@ -19,7 +19,7 @@ export const login = async (data, methoded) => {
   
 //Register
 export const register = (data) => {
-  return makeAxiosRequest('/register', data)
+  return makeAxiosRequest('/register/', data)
 }
   
 //Making a request
@@ -35,7 +35,7 @@ export const getAxiosRequestConfig = (requestUrl, data, method = 'post') => {
   // Config object – tells us everything special about the request
   const config = {
     method,
-    url: `/api/auth/${requestUrl}`,
+    url: `/api/auth/${requestUrl}/`,
     headers: {
       'Content-Type': 'application/json',
     },
