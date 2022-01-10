@@ -1,3 +1,4 @@
+import django_on_heroku
 """
 Django settings for project project.
 
@@ -146,3 +147,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'jwt_auth.User'
+
+django_on_heroku.settings(locals())
