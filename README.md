@@ -210,6 +210,10 @@ A challenge I didn’t think of when I started was actually the responsibility f
 
 However the big win for me is pushing myself and getting a fully operational final project by the deadline.
 
-## Future Features
+## Key learnings:
+
+I would say the big learning would be to trust in my own ability to learn new languages by myself, because I loved getting stuck in to the documentation and figuring out the correct way of doing things. It would also be to think about the nature of the data I will be dealing with once my project is complete and live.
+
+## Future Features:
 
 The next steps I will add are to have multiple keys for encryption which are selected at random, then on decryption it goes through all of the keys to figure out which one is the correct fit for the encryption. This will increase its security massively.
